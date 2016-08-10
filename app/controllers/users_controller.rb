@@ -10,11 +10,11 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
     if @user.save
-      puts "saving user #{@user.name} !! "
+      log_in @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
-      puts "ERROR user #{@user.name} !!"
+      # puts "ERROR ::::: user #{@user.name} !!"
       flash[:warning] = @user.errors.full_messages << " !! "
       render 'new'
     end
